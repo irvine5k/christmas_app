@@ -23,41 +23,45 @@ class _HomePageState extends State<HomePage> {
             fit: BoxFit.fitHeight,
           ),
           Container(color: Colors.white70),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(25),
-              child: Column(
-                children: <Widget>[
-                  Spacer(),
-                  Text(
-                    "Welcome to\n Christmas Gifts",
-                    style: TextStyle(
-                        fontSize: 32, height: 1.5, fontWeight: FontWeight.w500),
-                    textAlign: TextAlign.center,
-                  ),
-                  Spacer(),
-                  GridView(
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 1,
-                      mainAxisSpacing: 15,
-                      crossAxisSpacing: 15,
+          SingleChildScrollView(
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(25),
+                child: Column(
+                  children: <Widget>[
+                    const Text(
+                      "Welcome to\n Christmas Gifts",
+                      style: TextStyle(
+                        fontSize: 32,
+                        height: 1.5,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    children: <Widget>[
-                      _buildCard("icon-01.png", "List of Gifts", "/gifts"),
-                      _buildCard("icon-11.png", "My Gifts"),
-                      _buildCard("icon-15.png", "My Profile"),
-                      _buildCard("icon-22.png", "Logout"),
-                    ],
-                  ),
-                  Spacer(),
-                  Image.asset(
-                    "assets/images/icon-17.png",
-                    height: MediaQuery.of(context).size.height / 3.5,
-                  ),
-                ],
+                    const SizedBox(height: 20),
+                    GridView(
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 1,
+                        mainAxisSpacing: 15,
+                        crossAxisSpacing: 15,
+                      ),
+                      children: <Widget>[
+                        _buildCard("icon-01.png", "List of Gifts", "/gifts"),
+                        _buildCard("icon-11.png", "My Gifts"),
+                        _buildCard("icon-15.png", "My Profile"),
+                        _buildCard("icon-22.png", "Logout"),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Image.asset(
+                      "assets/images/icon-17.png",
+                      height: MediaQuery.of(context).size.height / 3.5,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -94,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                             color: Colors.grey,
                           ),
                         ),
-                      ),
+                      )
                   ],
                 ),
               ),
@@ -103,7 +107,13 @@ class _HomePageState extends State<HomePage> {
                 tag: "assets/images/$iconName-title",
                 child: Material(
                   type: MaterialType.transparency,
-                  child: Text(text, style: TextStyle(fontSize: 18)),
+                  child: FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: Text(
+                      text,
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
                 ),
               ),
             ],
