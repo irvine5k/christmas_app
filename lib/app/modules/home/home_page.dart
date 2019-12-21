@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:desafio_natal/app/widgets/blend_mask/blend_mask.dart';
 import 'package:flutter/material.dart';
 
@@ -44,8 +46,8 @@ class _HomePageState extends State<HomePage> {
                       crossAxisSpacing: 15,
                     ),
                     children: <Widget>[
-                      _buildCard("icon-01.png", "List of Gifts"),
-                      _buildCard("icon-11.png", "My Gifts", "/gifts"),
+                      _buildCard("icon-01.png", "List of Gifts", "/gifts"),
+                      _buildCard("icon-11.png", "My Gifts"),
                       _buildCard("icon-15.png", "My Profile"),
                       _buildCard("icon-22.png", "Logout"),
                     ],
@@ -80,7 +82,10 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 child: Stack(
                   children: <Widget>[
-                    Image.asset("assets/images/$iconName"),
+                    Hero(
+                      tag: "assets/images/$iconName",
+                      child: Image.asset("assets/images/$iconName"),
+                    ),
                     if (route == null)
                       Positioned.fill(
                         child: BlendMask(
@@ -94,7 +99,13 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(height: 10),
-              Text(text, style: TextStyle(fontSize: 18)),
+              Hero(
+                tag: "assets/images/$iconName-title",
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: Text(text, style: TextStyle(fontSize: 18)),
+                ),
+              ),
             ],
           ),
         ),

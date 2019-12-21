@@ -26,9 +26,18 @@ class _GiftListPageState extends State<GiftListPage> {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Image.asset("assets/images/icon-01.png", width: 30),
+            Hero(
+              tag: "assets/images/icon-01.png",
+              child: Image.asset("assets/images/icon-01.png", width: 30),
+            ),
             SizedBox(width: 5),
-            Text("List of Gifts"),
+            Hero(
+              tag: "assets/images/icon-01.png-title",
+              child: Material(
+                type: MaterialType.transparency,
+                child: Text("List of Gifts"),
+              ),
+            ),
           ],
         ),
         actions: <Widget>[
