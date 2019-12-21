@@ -7,9 +7,9 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Slidy',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.white,
       ),
-      initialRoute: '/',
+      initialRoute: '/gifts',
       onGenerateRoute: Modular.generateRoute,
     );
   }
